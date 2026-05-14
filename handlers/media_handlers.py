@@ -1,6 +1,5 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
-from aiogram.types import FSInputFile
 
 from functions.get_photo_by_name import get_photo
 
