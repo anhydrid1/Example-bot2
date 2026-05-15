@@ -27,6 +27,6 @@ size = ['Small', 'Middle', 'Big', 'Giant']
 
 async def inline_size():
     keyboard = InlineKeyboardBuilder()
-    for car in cars:
-        keyboard.add(InlineKeyboardButton(text=f'{size}', url='https://google.com'))
+    for size_s in size:
+        keyboard.add(InlineKeyboardButton(text=f'{size_s}', url='https://google.com'))
     return keyboard.adjust(2).as_markup()
