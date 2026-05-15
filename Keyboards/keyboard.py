@@ -1,5 +1,6 @@
 from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
-                           InlineKeyboardMarkup, InlineKeyboardButton)
+                           InlineKeyboardMarkup, InlineKeyboardButton,)
+from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
 
 
@@ -13,3 +14,11 @@ main = ReplyKeyboardMarkup(keyboard=[
 main2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Дополнительно', url='https://google.com')]
 ])
+
+cars = ['Toyota', 'Mercedes', 'Ferrari', 'Porsche']
+
+async def reply_cars():
+    keyboard = ReplyKeyboardBuilder()
+    for car in cars:
+        keyboard.add(KeyboardButton(text=f'{car}'))
+    return keyboard.adjust(2).as_markup()

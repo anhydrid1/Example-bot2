@@ -24,7 +24,8 @@ async def cmd_help(message: types.Message):
         '<b>/send_doc</b> - <i>прислать тестовый документ</i>\n'
         '<b>/menu</b> - <i>показать меню возможностей</i>\n'
         '<b>/promo</b> - <i>получить акцию</i>\n'
-        '<b>/card</b> - <i>получить открытку</i>'
+        '<b>/card</b> - <i>получить открытку</i>\n'
+        '<b>/cars</b> - <i>список машин</i>'
     )
 
     await message.answer(text, parse_mode='HTML', reply_markup=kb.main2)

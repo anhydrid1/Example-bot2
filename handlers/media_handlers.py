@@ -1,5 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
+import Keyboards.keyboard as kb
 
 from functions.get_photo_by_name import get_photo
 
@@ -57,3 +58,9 @@ async def cmd_card(message: types.Message):
         '<i>Хорошего дня!</i>',
         parse_mode='HTML'
     )
+
+@media_router.message(Command('cars'))
+async def cmd_card(message: types.Message):
+    await message.answer('<b>Вот машины на выбор:</b>',
+                         parse_mode='HTML',
+                         reply_markup=await kb.reply_cars())
