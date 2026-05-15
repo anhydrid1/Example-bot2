@@ -14,7 +14,7 @@ async def cmd_start(message: types.Message):
     parse_mode='HTML', reply_markup=kb.main)
 
 
-@basic_router.message(F.text == 'Помощь', Command('help'))
+@basic_router.message(Command('help'))
 async def cmd_help(message: types.Message):
     text = (
         '<b>Справка по командам бота:</b>\n\n'
