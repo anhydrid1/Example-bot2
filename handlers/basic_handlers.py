@@ -1,6 +1,7 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
 
+import Keyboards.keyboard as kb
 basic_router = Router()
 
 
@@ -10,7 +11,7 @@ async def cmd_start(message: types.Message):
         f'Привет, {message.from_user.full_name}, я - бот!\n'
             'Отправь мне фото, аудио или стикер.\n\n'
             'Чтобы узнать список команд воспользуйтесь <b>/help</b>',
-    parse_mode='HTML')
+    parse_mode='HTML', reply_markup=kb.main)
 
 
 @basic_router.message(Command('help'))
