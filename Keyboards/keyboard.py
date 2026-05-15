@@ -22,3 +22,11 @@ async def reply_cars():
     for car in cars:
         keyboard.add(KeyboardButton(text=f'{car}'))
     return keyboard.adjust(2).as_markup()
+
+size = ['Small', 'Middle', 'Big', 'Giant']
+
+async def inline_size():
+    keyboard = InlineKeyboardBuilder()
+    for car in cars:
+        keyboard.add(InlineKeyboardButton(text=f'{size}', url='https://google.com'))
+    return keyboard.adjust(2).as_markup()

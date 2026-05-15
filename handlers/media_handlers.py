@@ -45,7 +45,9 @@ async def cmd_promo(message: types.Message):
         '<a href="https://www.ozon.ru">магазине</a>'
         )
 
-    await message.answer(text, parse_mode='HTML')
+    await message.answer(text,
+                         parse_mode='HTML',
+                         reply_markup=await kb.inline_size())
 
 
 @media_router.message(Command('card'))
