@@ -27,7 +27,7 @@ async def cmd_help(message: types.Message):
         '<b>/card</b> - <i>получить открытку</i>'
     )
 
-    await message.answer(text, parse_mode='HTML')
+    await message.answer(text, parse_mode='HTML', reply_markup=kb.main2)
 
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
