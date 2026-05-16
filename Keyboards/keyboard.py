@@ -12,7 +12,7 @@ cars = ['Toyota', 'Mercedes', 'Ferrari', 'Porsche']
 async def inline_cars():
     keyboard = InlineKeyboardBuilder()
     for car in cars:
-        keyboard.add(InlineKeyboardButton(text=f'{car}'))
+        keyboard.add(InlineKeyboardButton(text=f'{car}', url='https://google.com'))
     return keyboard.adjust(2).as_markup()
 
 size = ['Small', 'Middle', 'Big', 'Giant']
