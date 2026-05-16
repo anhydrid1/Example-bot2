@@ -47,8 +47,10 @@ async def help_cmd(callback: CallbackQuery):
     )
 
     await callback.answer('Вы открыли список комманд')
-    await callback.message.edit_text(text, parse_mode='HTML',
-                                  reply_markup=await kb.inline_cars())
+    await callback.message.edit_text(text,
+                                     reply_markup=await kb.inline_cars(),
+                                     parse_mode='HTML'
+                                     )
 
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
