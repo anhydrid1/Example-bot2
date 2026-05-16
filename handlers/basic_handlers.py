@@ -18,7 +18,7 @@ async def cmd_start(message: types.Message):
 @basic_router.callback_query(F.data == 'help')
 async def help_cmd(callback: CallbackQuery):
     await callback.answer('Вы открыли список команд')
-    await callback.message.answer('хуй')
+    await callback.message.edit_text('хуй')
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
