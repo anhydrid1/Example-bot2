@@ -31,9 +31,11 @@ async def audio(message: types.Message):
 
 @media_router.callback_query(F.data == 'promo')
 async def cmd_promo(callback: CallbackQuery):
+    await callback.answer('Вы выбрали акцию')
+
     promo_image = get_photo('image_photo', 'promo.jpg')
 
-    await callback.answer_photo(
+    await callback.message.answer_photo(
         photo=promo_image,
         caption='<b>Наша новая акция!</b>',
         parse_mode='HTML'
@@ -47,7 +49,7 @@ async def cmd_promo(callback: CallbackQuery):
         '<a href="https://www.ozon.ru">магазине</a>'
         )
 
-    await callback.answer(text,
+    await callback.message.answer(text,
                          parse_mode='HTML',
                          reply_markup=await kb.inline_size())
 
