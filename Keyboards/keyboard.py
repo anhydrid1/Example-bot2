@@ -1,8 +1,6 @@
 from aiogram.types import (InlineKeyboardMarkup, InlineKeyboardButton,)
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-
-
 main = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Помощь', callback_data='help')],
     [InlineKeyboardButton(text='Меню', callback_data='menu')],

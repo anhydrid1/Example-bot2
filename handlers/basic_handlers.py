@@ -3,6 +3,7 @@ from aiogram.filters.command import Command
 from aiogram.types import CallbackQuery
 
 import Keyboards.keyboard as kb
+from Keyboards.keyboard import inline_cars
 
 basic_router = Router()
 
@@ -17,9 +18,8 @@ async def cmd_start(message: types.Message):
 
 @basic_router.callback_query(F.data == 'help')
 async def help_cmd(callback: CallbackQuery):
-    await callback.answer('Вы открыли список команд')
-    await callback.message.edit_text('хуй',
-                                     reply_markup=await kb.inline_cars())
+    await callback.answer('Вы открыли список команд', show_alert=True)
+    await callback.message.edit_text('Ghbdtn', reply_markup=await inline_cars())
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
