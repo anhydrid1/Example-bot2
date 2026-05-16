@@ -26,8 +26,8 @@ async def cmd_help(callback: CallbackQuery):
             '<b>/cars</b> - <i>список авто</i>'
             )
 
-    await callback.message.answer(text, parse_mode='HTML')
-    await callback.message.edit_text('Выберите авто: ',
+    await callback.message.edit_text(text,
+                                     parse_mode='HTML',
                                      reply_markup=await kb.inline_cars())
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
