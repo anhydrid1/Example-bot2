@@ -1,5 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
+from aiogram.types import CallbackQuery
 
 import Keyboards.keyboard as kb
 basic_router = Router()
@@ -29,6 +30,22 @@ async def cmd_help(message: types.Message):
     )
 
     await message.answer(text, parse_mode='HTML', reply_markup=kb.main2)
+
+@basic_router.callback_query(F.data == 'help')
+async def help_cmd(callback: CallbackQuery):
+    text = (
+        '<b>Справка по командам бота:</b>\n\n'
+        '<b>/start</b> - <i>начало работы с ботом</i>\n'
+        '<b>/help</b> - <i>показать это сообщение</i>\n'
+        '<b>/send_photo</b> - <i>прислать тестовую картинку</i>\n'
+        '<b>/send_doc</b> - <i>прислать тестовый документ</i>\n'
+        '<b>/menu</b> - <i>показать меню возможностей</i>\n'
+        '<b>/promo</b> - <i>получить акцию</i>\n'
+        '<b>/card</b> - <i>получить открытку</i>\n'
+        '<b>/cars</b> - <i>список машин</i>'
+    )
+
+    await callback.message.answer(text, parse_mode='HTML')
 
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())

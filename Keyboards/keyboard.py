@@ -4,12 +4,11 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
 
 
-main = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='/help')],
-    [KeyboardButton(text='/menu'), KeyboardButton(text='/promo')]
-],
-    resize_keyboard=True
-)
+main = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Помощь', callback_data='help')],
+    [InlineKeyboardButton(text='Меню', callback_data='menu')],
+    [InlineKeyboardButton(text='Акция', callback_data='promo')]
+])
 
 main2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Дополнительно', url='https://google.com')]
