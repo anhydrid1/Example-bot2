@@ -9,6 +9,8 @@ router = Router()
 
 @router.callback_query(F.data == 'menu')
 async def cmd_menu(callback: CallbackQuery):
+    await callback.answer('Вы выбрали меню')
+
     text = (
         '<b>Меню возможностей:</b>\n\n'   
         '<i>Этот бот демонстрирует:</i>\n'
