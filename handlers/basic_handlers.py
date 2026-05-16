@@ -19,7 +19,7 @@ async def cmd_start(message: types.Message):
 async def help_cmd(callback: CallbackQuery):
     await callback.answer('Вы открыли список команд')
 
-    text = (
+    text1 = (
         '<b>Справка по командам бота:</b>\n\n'
         '<b>/start</b> - <i>начало работы с ботом</i>\n'
         '<b>/send_photo</b> - <i>прислать тестовую картинку</i>\n'
@@ -28,7 +28,8 @@ async def help_cmd(callback: CallbackQuery):
         '<b>/promo</b> - <i>получить акцию</i>\n'
         '<b>/card</b> - <i>получить открытку</i>\n')
 
-    await callback.message.answer(text)
+    await callback.message.edit_text(text1, parse_mode='HTML',
+                                  reply_markup=await kb.inline_cars())
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
