@@ -1,14 +1,14 @@
-from aiogram import types, Router
+from aiogram import types, Router, F
 from aiogram.filters.command import Command
-from aiogram.types import FSInputFile
+from aiogram.types import FSInputFile, CallbackQuery
 
 from functions.get_photo_by_name import get_photo
 
 router = Router()
 
 
-@router.message(Command('menu'))
-async def cmd_menu(message: types.Message):
+@router.callback_query(F.data == 'menu')
+async def cmd_menu(callback: CallbackQuery):
     text = (
         '<b>Меню возможностей:</b>\n\n'   
         '<i>Этот бот демонстрирует:</i>\n'
@@ -21,7 +21,7 @@ async def cmd_menu(message: types.Message):
 
     )
 
-    await message.answer(text, parse_mode='HTML')
+    await callback.message.answer(text, parse_mode='HTML')
 
 
 @router.message(Command('send_photo'))

@@ -1,6 +1,5 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
-from aiogram.types import CallbackQuery
 
 import Keyboards.keyboard as kb
 
