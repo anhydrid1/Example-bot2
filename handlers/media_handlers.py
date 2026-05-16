@@ -61,8 +61,8 @@ async def cmd_card(message: types.Message):
         parse_mode='HTML'
     )
 
-#@media_router.message(Command('cars'))
-#async def cmd_card(message: types.Message):
-   # await message.answer('<b>Вот машины на выбор:</b>',
-      #                   parse_mode='HTML',
-         #                reply_markup=await kb.inline_cars())
+@media_router.message(Command('cars'))
+async def cmd_card(message: types.Message):
+    await message.answer('<b>Вот машины на выбор:</b>',
+                        parse_mode='HTML',
+                         reply_markup=await kb.inline_cars())
