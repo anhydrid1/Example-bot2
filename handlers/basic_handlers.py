@@ -16,6 +16,9 @@ async def cmd_start(message: types.Message):
 
 @basic_router.callback_query(F.data == 'help')
 async def help_cmd(callback: CallbackQuery):
+
+    await callback.answer('Вы открыли список комманд')
+
     text = (
         '<b>Справка по командам бота:</b>\n\n'
         '<b>/start</b> - <i>начало работы с ботом</i>\n'
@@ -27,7 +30,6 @@ async def help_cmd(callback: CallbackQuery):
         '<b>/cars</b> - <i>список машин</i>'
     )
 
-    await callback.answer('Вы открыли список комманд')
     await callback.message.edit_text(text, parse_mode='HTML',
                                      reply_markup=await kb.inline_cars())
 
