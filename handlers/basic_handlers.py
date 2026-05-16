@@ -1,5 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
+from aiogram.types import CallbackQuery
 
 import Keyboards.keyboard as kb
 
@@ -13,6 +14,19 @@ async def cmd_start(message: types.Message):
             'Отправь мне фото, аудио или стикер.',
             reply_markup=kb.main)
 
+@basic_router.callback_query(F.data == 'help')
+async def cmd_help(callback: CallbackQuery):
+    await callback.answer('Вы выбрали помощь')
+
+    text = ('- <b>Список доступных комманд</b> -\n\n'
+            '<b>/start</b> - <i>начало работы с ботом</i>\n'
+            '<b>/send_photo</b> - <i>отправить тестовое фото</i>\n'
+            '<b>/send_doc</b> - <i>отправить тестовый документ</i>\n'
+            '<b>/card</b> - <i>получить персональную открытку</i>\n'
+            '<b>/cars</b> - <i>список авто</i>'
+            )
+
+    await callback.message.answer(text, parse_mode='HTML')
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
