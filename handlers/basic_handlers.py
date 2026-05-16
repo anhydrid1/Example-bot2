@@ -19,7 +19,7 @@ async def cmd_start(message: types.Message):
 async def help_cmd(callback: CallbackQuery):
     await callback.answer('Вы открыли список команд')
 
-    await callback.message.edit_text('привте',
+    await callback.message.answer('привте',
         reply_markup=await kb.inline_cars())
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
