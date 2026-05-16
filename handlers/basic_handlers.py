@@ -44,6 +44,7 @@ async def help_cmd(callback: CallbackQuery):
         '<b>/cars</b> - <i>список машин</i>'
     )
 
+    await callback.answer('Вы открыли список комманд')
     await callback.message.answer(text, parse_mode='HTML')
 
 
