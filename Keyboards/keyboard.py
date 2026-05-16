@@ -10,16 +10,12 @@ main = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Акция', callback_data='promo')]
 ])
 
-main2 = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Дополнительно', url='https://google.com')]
-])
-
 cars = ['Toyota', 'Mercedes', 'Ferrari', 'Porsche']
 
-async def reply_cars():
-    keyboard = ReplyKeyboardBuilder()
+async def inline_cars():
+    keyboard = InlineKeyboardBuilder()
     for car in cars:
-        keyboard.add(KeyboardButton(text=f'{car}'))
+        keyboard.add(InlineKeyboardButton(text=f'{car}'))
     return keyboard.adjust(2).as_markup()
 
 size = ['Small', 'Middle', 'Big', 'Giant']

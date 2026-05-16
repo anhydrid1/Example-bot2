@@ -65,4 +65,4 @@ async def cmd_card(message: types.Message):
 async def cmd_card(message: types.Message):
     await message.answer('<b>Вот машины на выбор:</b>',
                          parse_mode='HTML',
-                         reply_markup=await kb.reply_cars())
+                         reply_markup=await kb.inline_cars())
