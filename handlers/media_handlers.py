@@ -1,5 +1,7 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
+from aiogram.types import CallbackQuery
+
 import Keyboards.keyboard as kb
 
 from functions.get_photo_by_name import get_photo
@@ -27,11 +29,11 @@ async def audio(message: types.Message):
     await message.answer('Отличный трек! Добавляю в свой плейлист.')
 
 
-@media_router.message(Command('promo'))
-async def cmd_promo(message: types.Message):
+@media_router.callback_query(F.data == 'promo')
+async def cmd_promo(callback: CallbackQuery):
     promo_image = get_photo('image_photo', 'promo.jpg')
 
-    await message.answer_photo(
+    await callback.answer_photo(
         photo=promo_image,
         caption='<b>Наша новая акция!</b>',
         parse_mode='HTML'
@@ -45,7 +47,7 @@ async def cmd_promo(message: types.Message):
         '<a href="https://www.ozon.ru">магазине</a>'
         )
 
-    await message.answer(text,
+    await callback.answer(text,
                          parse_mode='HTML',
                          reply_markup=await kb.inline_size())
 
