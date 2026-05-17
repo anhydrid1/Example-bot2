@@ -25,7 +25,8 @@ async def cmd_help(callback: CallbackQuery):
             '<b>/send_photo</b> - <i>отправить тестовое фото</i>\n'
             '<b>/send_doc</b> - <i>отправить тестовый документ</i>\n'
             '<b>/card</b> - <i>получить персональную открытку</i>\n'
-            '<b>/cars</b> - <i>список авто</i>'
+            '<b>/cars</b> - <i>список авто</i>\n'
+            '<b>/reg</b> - <i>регистрация</i>'
             )
 
     await callback.message.edit_text(text,
