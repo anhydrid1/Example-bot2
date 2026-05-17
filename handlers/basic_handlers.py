@@ -1,6 +1,8 @@
 from aiogram import types, Router, F
 from aiogram.filters.command import Command
 from aiogram.types import CallbackQuery
+from aiogram.fsm.context import FSMContext
+from user import Reg
 
 import Keyboards.keyboard as kb
 
@@ -29,6 +31,28 @@ async def cmd_help(callback: CallbackQuery):
     await callback.message.edit_text(text,
                                      parse_mode='HTML',
                                      reply_markup=await kb.inline_cars())
+
+
+
+@basic_router.message(Command('reg'))
+async def reg_one(message: types.Message, state: FSMContext):
+    await state.set_state(Reg.name)
+    await message.answer('Введите ваше имя')
+
+@basic_router.message(Reg.name)
+async def reg_two(message: types.Message, state: FSMContext):
+    await state.update_data(name=message.text)
+    await state.set_state(Reg.number)
+    await message.answer('Введите номер телефона')
+
+@basic_router.message(Reg.name)
+async def two_three(message: types.Message, state: FSMContext):
+    await state.update_data(number=message.text)
+    data = await state.get_data()
+    await message.answer('Спасибо, регистрация завершена\nИмя: {data["name"]}\nНомер: {data["number"]}')
+    await state.clear()
+
+
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
