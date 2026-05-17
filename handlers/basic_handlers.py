@@ -49,7 +49,7 @@ async def reg_two(message: types.Message, state: FSMContext):
 async def two_three(message: types.Message, state: FSMContext):
     await state.update_data(number=message.text)
     data = await state.get_data()
-    await message.answer('Спасибо, регистрация завершена\nИмя: {data["name"]}\nНомер: {data["number"]}')
+    await message.answer(f'Спасибо, регистрация завершена\nИмя: {data["name"]}\nНомер: {data["number"]}')
     await state.clear()
 
 
