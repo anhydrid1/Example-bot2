@@ -45,7 +45,7 @@ async def reg_two(message: types.Message, state: FSMContext):
     await state.set_state(Reg.number)
     await message.answer('Введите номер телефона')
 
-@basic_router.message(Reg.name)
+@basic_router.message(Reg.number)
 async def two_three(message: types.Message, state: FSMContext):
     await state.update_data(number=message.text)
     data = await state.get_data()
