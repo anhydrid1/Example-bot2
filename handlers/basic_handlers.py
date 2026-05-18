@@ -6,7 +6,11 @@ from user import Reg
 
 import Keyboards.keyboard as kb
 
+from middlewares import TestMiddleware
+
 basic_router = Router()
+
+basic_router.message.middleware(TestMiddleware())
 
 
 @basic_router.message(Command('start'))
@@ -33,7 +37,7 @@ async def cmd_help(callback: CallbackQuery):
                                      parse_mode='HTML',
                                      reply_markup=await kb.inline_cars())
 
-
+# Регистрация FSM
 
 @basic_router.message(Command('reg'))
 async def reg_one(message: types.Message, state: FSMContext):
@@ -53,7 +57,7 @@ async def two_three(message: types.Message, state: FSMContext):
     await message.answer(f'Спасибо, регистрация завершена\nИмя: {data["name"]}\nНомер: {data["number"]}')
     await state.clear()
 
-
+########################
 
 @basic_router.message(F.text, lambda message: "дурак" in message.text.lower())
 async def rule(message: types.Message):
