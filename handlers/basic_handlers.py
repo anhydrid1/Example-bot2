@@ -10,7 +10,7 @@ from middlewares import TestMiddleware
 
 basic_router = Router()
 
-basic_router.message.middleware(TestMiddleware())
+basic_router.message.outer_middleware(TestMiddleware())
 
 
 @basic_router.message(Command('start'))
