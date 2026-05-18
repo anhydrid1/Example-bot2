@@ -4,6 +4,7 @@ import logging
 from os import getenv
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher
+from database.models import async_main
 
 # Импортируем наш роутер из пакета handlers
 from handlers.basic_handlers import basic_router
