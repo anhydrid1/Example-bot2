@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from user import Reg
 
 import Keyboards.keyboard as kb
-
+import database.requests as rq
 from middlewares import TestMiddleware
 
 basic_router = Router()
@@ -15,10 +15,10 @@ basic_router.message.outer_middleware(TestMiddleware())
 
 @basic_router.message(Command('start'))
 async def cmd_start(message: types.Message):
-    await message.answer(
-        f'Привет, {message.from_user.full_name}, я - бот!\n'
-            'Отправь мне фото, аудио или стикер.',
+    await rq.set_user(message.from_user.id)
+    await message.answer('Добро пожаловать в магазин кроссовок!',
             reply_markup=kb.main)
+
 
 @basic_router.callback_query(F.data == 'help')
 async def cmd_help(callback: CallbackQuery):
