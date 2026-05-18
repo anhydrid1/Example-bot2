@@ -24,6 +24,7 @@ dp = Dispatcher()
 
 # Запуск процесса поллинга новых апдейтов
 async def main():
+    await async_main()
     # Подключаем роутеры к диспетчеру
     dp.include_router(router)
     dp.include_router(media_router)
